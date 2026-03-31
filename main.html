@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Message for You</title>
+    <style>
+        :root {
+            --paper: #fff9f0;
+            --ink: #4b2c20;
+            --accent: #d63031;
+        }
+
+        body {
+            background-color: #fce4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Georgia', serif;
+        }
+
+        .envelope-wrapper {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        /* The Letter Container */
+        .letter {
+            background: var(--paper);
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
+            display: none;
+        }
+
+        .letter.reveal {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Design Elements */
+        h1 {
+            color: var(--accent);
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: var(--ink);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 40px;
+        }
+
+        .heart-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 48, 49, 0.3);
+        }
+
+        /* Simple Floating Hearts Animation */
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .heart-particle {
+            position: fixed;
+            color: var(--accent);
+            user-select: none;
+            pointer-events: none;
+            animation: float 4s linear forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="opener">
+        <button class="heart-btn" onclick="openLetter()">Click to Open ❤️</button>
+    </div>
+
+    <div class="letter" id="letter">
+        <h1>To My Pretty Girlfriend</h1>
+        
+        <p>Every day that goes by, I realize more and more how much you mean to me. You aren't just a part of my life; you’re the part that makes everything else make sense. Thank you for being my constant, my peace, and the person who can make me smile without even trying.</p>
+        
+        <p>I may not always have the perfect words to say, but I want you to know that I appreciate every little thing you do. I promise to keep choosing you, to support you, and to love you more with every passing day. You are the best thing that has ever happened to me.</p>
+        
+       
+        
+        <div class="signature">
+            Yours always,<br>
+            Mike
+        </div>
+    </div>
+
+    <script>
+        function openLetter() {
+            // Hide the button
+            document.getElementById('opener').style.display = 'none';
+            
+            // Show the letter
+            const letter = document.getElementById('letter');
+            letter.classList.add('reveal');
+
+            // Create some floating hearts
+            for(let i = 0; i < 15; i++) {
+                createHeart();
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.duration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 4000);
+        }
+    </script>
+</body>
+</html>
