@@ -1,0 +1,93 @@
+/* --- Pink Lily Theme --- */
+:root {
+    --lily-petal: #fce4ec;    /* Softest pink */
+    --lily-heart: #f06292;    /* Vibrant pink center */
+    --lily-stem: #81c784;     /* Gentle green accent */
+    --paper: #ffffff;         /* Clean white paper */
+    --ink: #4a148c;           /* Deep plum for readability */
+}
+
+body {
+    background-color: #fff1f3;
+    background-image: radial-gradient(#f8bbd0 0.5px, transparent 0.5px);
+    background-size: 20px 20px; /* Subtle polka dot pattern */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Georgia', serif;
+}
+
+/* --- The Letter Box --- */
+.letter {
+    background: var(--paper);
+    width: 85%;
+    max-width: 450px;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(240, 98, 146, 0.2);
+    border: 2px solid var(--lily-petal);
+    position: relative;
+    
+    /* Animation */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.7s ease-out;
+}
+
+.letter.reveal {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Floral Header --- */
+h1 {
+    color: var(--lily-heart);
+    text-align: center;
+    font-size: 1.7rem;
+    margin-top: 0;
+    position: relative;
+}
+
+/* Adding a "Lily" emoji decoration */
+h1::before, h1::after {
+    content: '🌸'; 
+    font-size: 1.2rem;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+p {
+    line-height: 1.7;
+    color: var(--ink);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 30px;
+    color: var(--lily-heart);
+    font-weight: bold;
+    border-top: 1px solid var(--lily-petal);
+    padding-top: 10px;
+}
+
+/* --- The Opening Button --- */
+.heart-btn {
+    background: var(--lily-heart);
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(240, 98, 146, 0.4);
+    transition: transform 0.2s;
+}
+
+.heart-btn:active {
+    transform: scale(0.95);
+}
